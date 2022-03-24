@@ -6,6 +6,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { SALEOR_DOMAIN_HEADER } from "../../constants";
 import { createWebhook } from "../../graphql/data/mutations/webhook";
 import { saleor } from "../../graphql/client";
+import { getBaseURL } from "../../utils/middleware";
 
 const handler = async (
   request: NextApiRequest,
@@ -37,7 +38,7 @@ const handler = async (
     mutation: createWebhook,
     variables: {
       name: "Best app: Product updated",
-      targetUrl: `${process.env.NEXT_PUBLIC_APP_DOMAIN}/api/webhooks/product-updated`,
+      targetUrl: `${getBaseURL(request)}/api/webhooks/product-updated`,
       events: WebhookEventTypeEnum.ProductUpdated,
       secretKey: process.env.SECRET,
     },

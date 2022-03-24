@@ -1,3 +1,4 @@
+import { NextApiRequest } from "next";
 import Cors from "cors";
 
 export default function initMiddleware(middleware: any) {
@@ -17,3 +18,8 @@ export const corsPost = initMiddleware(
     methods: ["POST"],
   })
 );
+
+export const getBaseURL = (req: NextApiRequest): string => {
+  const { host, "x-forwarded-proto": protocol = "http" } = req.headers;
+  return `${protocol}://${host}`;
+};
