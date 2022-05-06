@@ -1,3 +1,5 @@
+*This project has reached the end of its development. Please use [saleor-app-template](https://github.com/saleor/saleor-app-template) for development, instaed.*
+
 # Saleor App, Next.js example
 
 Bare-bones example app with webhook on product update.
